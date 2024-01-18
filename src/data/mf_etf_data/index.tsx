@@ -3,7 +3,7 @@ type OtherColumns = {
   value: number
 }
 
-type MFETFType = {
+export type MFETFType = {
   scrip: string
   price: number
   secondColumn: OtherColumns[]
