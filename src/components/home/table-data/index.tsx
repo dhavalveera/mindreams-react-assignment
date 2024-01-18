@@ -1,21 +1,27 @@
-import { FC, Fragment } from 'react'
+import { FC, Fragment, useEffect } from 'react'
 
 // MUI
 import { Box, Divider, Grid, Stack } from '@mui/material'
 
-// Data
-import { MFETFType } from '../../../data'
+// Redux
+import { useDispatch, useSelector } from 'react-redux'
+
+// Redux
+import { RootState } from '../../../reduxStore/reducer'
+import { sagaActions } from '../../../reduxStore/actions'
 
 // UI
 import { BuyButton, SellButton } from '../../../ui/button'
 import { BorderLinearProgress, PriceText } from './styles'
 
-type DataTableSectionProps = {
-  MFETFData: MFETFType[]
-}
+const DataTableSection: FC = () => {
+  const dispatch = useDispatch()
 
-const DataTableSection: FC<DataTableSectionProps> = props => {
-  const { MFETFData } = props
+  const MFETFData = useSelector((state: RootState) => state.mfETF.data)
+
+  useEffect(() => {
+    dispatch({ type: sagaActions.FETCH_DATA_SAGA })
+  }, [dispatch])
 
   return (
     <Box>

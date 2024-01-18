@@ -13,6 +13,11 @@ export type MFETFType = {
   minus: boolean
 }
 
+export type ChartValueType = {
+  label: string
+  value: number
+}
+
 export const MFETFData: MFETFType[] = [
   {
     scrip: 'AADR',
@@ -130,6 +135,7 @@ export const MFETFData: MFETFType[] = [
   },
 ]
 
-export const retrieveMFETFData = () => {
-  return MFETFData
-}
+export const ChartValueData: ChartValueType[] = [
+  { label: 'Mutual Funds', value: 143.19 },
+  { label: 'ETFs', value: 51.72 },
+]

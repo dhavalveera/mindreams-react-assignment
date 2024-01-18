@@ -1,14 +1,29 @@
-import { FC } from 'react'
+import { FC, useEffect } from 'react'
 
 // MUI
 import { Box } from '@mui/material'
+
+// Redux
+import { useDispatch, useSelector } from 'react-redux'
+
+// Redux
+import { RootState } from '../../../reduxStore/reducer'
+import { sagaActions } from '../../../reduxStore/actions'
 
 // Apexcharts
 import Chart from 'react-apexcharts'
 import { ApexOptions } from 'apexcharts'
 
 const ChartSection: FC = () => {
-  const series: Array<number> = [143.19, 51.72]
+  const dispatch = useDispatch()
+
+  const ChartData = useSelector((state: RootState) => state.chart.data)
+
+  useEffect(() => {
+    dispatch({ type: sagaActions.FETCH_CHART_DATA_SAGA })
+  }, [dispatch])
+
+  const series: Array<number> = ChartData.map(item => item.value)
   const options: ApexOptions = {
     chart: {
       width: 380,
@@ -35,7 +50,7 @@ const ChartSection: FC = () => {
       offsetY: 0,
       height: 230,
     },
-    labels: ['Mutual Funds', 'ETFs'],
+    labels: ChartData.map(item => item.label),
   }
 
   return (
