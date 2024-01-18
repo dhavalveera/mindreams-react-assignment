@@ -8,7 +8,7 @@ import Chart from 'react-apexcharts'
 import { ApexOptions } from 'apexcharts'
 
 const ChartSection: FC = () => {
-  const series: Array<number> = [200, 50]
+  const series: Array<number> = [143.19, 51.72]
   const options: ApexOptions = {
     chart: {
       width: 380,

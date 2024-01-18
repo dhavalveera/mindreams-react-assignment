@@ -23,7 +23,7 @@ export const MFETFData: MFETFType[] = [
       { label: 'Invested Amt', value: 17952.07 },
     ],
     thidColumn: [
-      { label: 'Market Value', value: 0 },
+      { label: 'Market Value', value: 21629 },
       { label: '% of Portfolio Value', value: 22.06 },
     ],
     fourthColumn: [
@@ -42,7 +42,7 @@ export const MFETFData: MFETFType[] = [
       { label: 'Invested Amt', value: 4725.84 },
     ],
     thidColumn: [
-      { label: 'Market Value', value: 0 },
+      { label: 'Market Value', value: 4872 },
       { label: '% of Portfolio Value', value: 5.81 },
     ],
     fourthColumn: [
@@ -61,7 +61,7 @@ export const MFETFData: MFETFType[] = [
       { label: 'Invested Amt', value: 18597.6 },
     ],
     thidColumn: [
-      { label: 'Market Value', value: 0 },
+      { label: 'Market Value', value: 17220 },
       { label: '% of Portfolio Value', value: 22.86 },
     ],
     fourthColumn: [
@@ -80,7 +80,7 @@ export const MFETFData: MFETFType[] = [
       { label: 'Invested Amt', value: 17811.04 },
     ],
     thidColumn: [
-      { label: 'Market Value', value: 0 },
+      { label: 'Market Value', value: 16340.4 },
       { label: '% of Portfolio Value', value: 21.89 },
     ],
     fourthColumn: [
@@ -99,7 +99,7 @@ export const MFETFData: MFETFType[] = [
       { label: 'Invested Amt', value: 13765.36 },
     ],
     thidColumn: [
-      { label: 'Market Value', value: 0 },
+      { label: 'Market Value', value: 17206.7 },
       { label: '% of Portfolio Value', value: 16.92 },
     ],
     fourthColumn: [
@@ -118,7 +118,7 @@ export const MFETFData: MFETFType[] = [
       { label: 'Invested Amt', value: 8509.0 },
     ],
     thidColumn: [
-      { label: 'Market Value', value: 0 },
+      { label: 'Market Value', value: 8509 },
       { label: '% of Portfolio Value', value: 10.46 },
     ],
     fourthColumn: [

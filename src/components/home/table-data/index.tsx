@@ -4,13 +4,19 @@ import { FC, Fragment } from 'react'
 import { Box, Divider, Grid, Stack } from '@mui/material'
 
 // Data
-import { MFETFData } from '../../../data'
+import { MFETFType } from '../../../data'
 
 // UI
 import { BuyButton, SellButton } from '../../../ui/button'
 import { BorderLinearProgress, PriceText } from './styles'
 
-const DataTableSection: FC = () => {
+type DataTableSectionProps = {
+  MFETFData: MFETFType[]
+}
+
+const DataTableSection: FC<DataTableSectionProps> = props => {
+  const { MFETFData } = props
+
   return (
     <Box>
       {MFETFData.map((data, index) => {
@@ -83,9 +89,17 @@ const DataTableSection: FC = () => {
                   )
                 })}
 
-                {/* <Box sx={{ width: '100%', mt: 2 }}>
-                  <BorderLinearProgress variant="determinate" value={data?.percent_of_portfolio_value} />
-                </Box> */}
+                {data?.thidColumn
+                  .filter(lab => lab.label !== 'Market Value')
+                  .map((thirdFilterData, indexFilterThird) => {
+                    return (
+                      <Fragment key={indexFilterThird}>
+                        <Box sx={{ width: '100%', mt: 2 }}>
+                          <BorderLinearProgress variant="determinate" value={thirdFilterData.value} />
+                        </Box>
+                      </Fragment>
+                    )
+                  })}
               </Grid>
 
               <Grid item xs={12} sm={4} md={3}>
@@ -110,7 +124,7 @@ const DataTableSection: FC = () => {
                               </Box>
                               <Box component="span" sx={{ color: '#00FF00' }}>
                                 {data?.minus === false ? '+' : null}
-                              </Box>
+                              </Box>{' '}
                               {fourthData?.value}%
                             </span>
                           )}
