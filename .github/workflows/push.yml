@@ -1,0 +1,21 @@
+name: 'Build on Linux'
+on:
+  push:
+
+permissions:
+  contents: read # to fetch code (actions/checkout)
+
+jobs:
+  build-app-mac-linux:
+    name: Build Vite + React App
+    # runs-on: [ubuntu-latest, macos-latest]
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+      - name: Install Dependencies
+        run: npm ci
+      - name: Build App
+        run: npm run build
