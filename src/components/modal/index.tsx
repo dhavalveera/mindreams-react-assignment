@@ -1,13 +1,14 @@
 import { FC, ReactElement, Ref, forwardRef } from 'react'
 
 // MUI
-import { Button, Dialog, DialogContent, DialogContentText, Slide, useMediaQuery, useTheme } from '@mui/material'
+import { Button, Dialog, DialogContent, DialogContentText, Slide, Typography, useMediaQuery, useTheme } from '@mui/material'
 import { TransitionProps } from '@mui/material/transitions'
 
 type BuySellModalProps = {
   openModal: boolean
   onClose: () => void
   btnSelected: string
+  data: string
 }
 
 const Transition = forwardRef(function Transition(
@@ -20,7 +21,7 @@ const Transition = forwardRef(function Transition(
 })
 
 const BuySellModal: FC<BuySellModalProps> = props => {
-  const { btnSelected, onClose, openModal } = props
+  const { btnSelected, data, onClose, openModal } = props
 
   const theme = useTheme()
   const fullScreen = useMediaQuery(theme.breakpoints.down('md'))
@@ -29,7 +30,7 @@ const BuySellModal: FC<BuySellModalProps> = props => {
     <Dialog
       open={openModal}
       TransitionComponent={Transition}
-      aria-describedby="select-city-dialog-modal"
+      aria-describedby="but-sell-dialog-modal"
       fullScreen={fullScreen}
       transitionDuration={1500}
       fullWidth
@@ -38,7 +39,11 @@ const BuySellModal: FC<BuySellModalProps> = props => {
       keepMounted
     >
       <DialogContent sx={{ textAlign: 'center' }}>
-        <DialogContentText>{btnSelected === 'buy' ? 'You want to Buy?' : 'You want to Sell?'}</DialogContentText>
+        <DialogContentText>
+          {btnSelected === 'buy' ? 'You want to Buy?' : 'You want to Sell?'}
+
+          <Typography sx={{ my: 5, fontWeight: 600, mb: 0 }}>{data}</Typography>
+        </DialogContentText>
 
         <Button variant="outlined" color={btnSelected === 'buy' ? 'success' : 'error'} onClick={onClose} type="button" sx={{ mt: 5 }}>
           OK

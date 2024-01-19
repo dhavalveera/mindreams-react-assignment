@@ -24,6 +24,7 @@ const DataTableSection: FC = () => {
 
   const [openModal, setOpenModal] = useState<boolean>(false)
   const [selectedBtn, setSelectedBtn] = useState<string>('')
+  const [selectedString, setSelectedString] = useState<string>('')
 
   const handleCloseModal = () => setOpenModal(!openModal)
 
@@ -154,6 +155,12 @@ const DataTableSection: FC = () => {
                   <BuyButton
                     onClick={() => {
                       setSelectedBtn('buy')
+                      setSelectedString(
+                        `${data.scrip} - ${new Intl.NumberFormat('en-US', {
+                          style: 'currency',
+                          currency: 'USD',
+                        }).format(data.price)}`,
+                      )
                       setOpenModal(true)
                     }}
                   >
@@ -163,6 +170,12 @@ const DataTableSection: FC = () => {
                   <SellButton
                     onClick={() => {
                       setSelectedBtn('sell')
+                      setSelectedString(
+                        `${data.scrip} - ${new Intl.NumberFormat('en-US', {
+                          style: 'currency',
+                          currency: 'USD',
+                        }).format(data.price)}`,
+                      )
                       setOpenModal(true)
                     }}
                   >
@@ -177,7 +190,7 @@ const DataTableSection: FC = () => {
         )
       })}
 
-      <BuySellModal btnSelected={selectedBtn} onClose={handleCloseModal} openModal={openModal} />
+      <BuySellModal btnSelected={selectedBtn} data={selectedString} onClose={handleCloseModal} openModal={openModal} />
     </Box>
   )
 }

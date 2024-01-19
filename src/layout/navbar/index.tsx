@@ -7,7 +7,9 @@ const Navbar: FC = () => {
   return (
     <Box>
       <Container maxWidth="xl">
-        <Typography sx={{ py: 2 }}>Mindreams React Assignment</Typography>
+        <Typography variant="h5" component="h5" sx={{ py: 2, fontWeight: 700, textDecorationLine: 'underline' }}>
+          Mindreams React Assignment
+        </Typography>
       </Container>
     </Box>
   )
