@@ -9,7 +9,7 @@ import ChartSection from './components/home/chart'
 
 const App: FC = () => {
   return (
-    <Box sx={{ mt: 4 }}>
+    <Box sx={{ my: 8 }}>
       <Container maxWidth="xl">
         <Grid container justifyContent="space-between" alignItems="center" spacing={8}>
           <Grid item xs={12} sm={12} md={9}>

@@ -37,10 +37,10 @@ const ChartSection: FC = () => {
         breakpoint: 480,
         options: {
           chart: {
-            width: 200,
+            width: '100%',
           },
           legend: {
-            show: false,
+            show: true,
           },
         },
       },
@@ -54,7 +54,7 @@ const ChartSection: FC = () => {
   }
 
   return (
-    <Box>
+    <Box sx={{ display: 'flex', justifyContent: 'center' }}>
       <Chart type="donut" series={series} options={options} />
     </Box>
   )

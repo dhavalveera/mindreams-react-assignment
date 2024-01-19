@@ -1,10 +1,13 @@
-import { FC, Fragment, useEffect } from 'react'
+import { FC, Fragment, useEffect, useState } from 'react'
 
 // MUI
 import { Box, Divider, Grid, Stack } from '@mui/material'
 
 // Redux
 import { useDispatch, useSelector } from 'react-redux'
+
+// Modal
+import BuySellModal from '../../modal'
 
 // Redux
 import { RootState } from '../../../reduxStore/reducer'
@@ -18,6 +21,11 @@ const DataTableSection: FC = () => {
   const dispatch = useDispatch()
 
   const MFETFData = useSelector((state: RootState) => state.mfETF.data)
+
+  const [openModal, setOpenModal] = useState<boolean>(false)
+  const [selectedBtn, setSelectedBtn] = useState<string>('')
+
+  const handleCloseModal = () => setOpenModal(!openModal)
 
   useEffect(() => {
     dispatch({ type: sagaActions.FETCH_DATA_SAGA })
@@ -143,9 +151,23 @@ const DataTableSection: FC = () => {
 
               <Grid item xs={12} sm={4} md={1}>
                 <Box sx={{ display: 'flex', flexDirection: { md: 'column', xs: 'row' }, gap: { md: 2, xs: 5 } }}>
-                  <BuyButton>Buy</BuyButton>
+                  <BuyButton
+                    onClick={() => {
+                      setSelectedBtn('buy')
+                      setOpenModal(true)
+                    }}
+                  >
+                    Buy
+                  </BuyButton>
 
-                  <SellButton>Sell</SellButton>
+                  <SellButton
+                    onClick={() => {
+                      setSelectedBtn('sell')
+                      setOpenModal(true)
+                    }}
+                  >
+                    Sell
+                  </SellButton>
                 </Box>
               </Grid>
             </Grid>
@@ -154,6 +176,8 @@ const DataTableSection: FC = () => {
           </Fragment>
         )
       })}
+
+      <BuySellModal btnSelected={selectedBtn} onClose={handleCloseModal} openModal={openModal} />
     </Box>
   )
 }
